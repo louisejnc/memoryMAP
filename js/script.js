@@ -37,7 +37,7 @@ let mapPrivate = {
     `mapHome`,
     `mapClem`,
     `mapInes`,
-    `mapClebard`,
+    // `mapClebard`,
     // `mapTattoo`,
   ],
   // // PATH OF VIDEOS
@@ -54,7 +54,7 @@ let mapPrivate = {
     [1675,740,"mapHome"], // HOME
     [1693,960,"mapClem"], // CLEM
     [1642,866,"mapInes"], // INES
-    [1500,850,"mapClebard"], // CLEBARD
+    // [1500,850,"mapClebard"], // CLEBARD
     // [0,0,0,0,0,0,0,0,"mapTattoo"] // TATTOO
   ],
   // REC ICONS COORDINATES CORRESPONDING TO MAPS // ON 1920x1080 BASIS
@@ -127,7 +127,7 @@ let mapPrivate = {
     	["11122021_2241", 244.5, 636.5, "chezClem",],
     	["12122021_2251", 600.5, 484.5, "chezClem",],
     	["13112021_0420", 431.5, 245.5, "chezClem",],
-    	["13112021_0133", 447.5, 514.5, "chezClem",],
+    	["13122021_0133", 447.5, 514.5, "chezClem",],
     	["14102021_1246", 460.5, 311.5, "chezClem",],
     	["15122021_2000", 369.5, 298.5, "chezClem",],
     	["16112021_0112", 389.5, 251.5, "chezClem",],
@@ -149,15 +149,40 @@ let mapPrivate = {
     //FIN MAP CLEM
 
     // MAP INES
-    [],
+    [	["05102021_2253", 514.5, 344.5, "chezInes"],
+    	["05102021_2255", 477.5, 335.5, "chezInes"],
+    	["05102021_2315", 1050.5, 899.5, "chezInes"],
+    	["05102021_2351", 1022.5, 882.5, "chezInes"],
+    	["07102021_1952", 148.5, 460.5, "chezInes"],
+    	["07102021_2118", 1077.5, 883.5, "chezInes"],
+    	["07102021_2200", 1123.5, 892.5, "chezInes"],
+    	["07102021_2254", 1104.5, 899.5, "chezInes"],
+    	["12112021_1956", 382.5, 238.5, "chezInes"],
+    	["12112021_2037", 404.5, 214.5, "chezInes"],
+    	["14092021_2227", 223.5, 177.5, "chezInes"],
+    	["16102021_1801", 316.5, 319.5, "chezInes"],
+    	["16102021_1835", 329.5, 351.5, "chezInes"],
+    	["16102021_1843", 432.5, 236.5, "chezInes"],
+    	["20102021_1857", 457.5, 561.5, "chezInes"],
+    	["20102021_1933", 500.5, 199.5, "chezInes"],
+    	["20102021_2207", 184.5, 159.5, "chezInes"],
+    	["24102021_1517", 274.5, 302.5, "chezInes"],
+    	["24102021_1554", 255.5, 326.5, "chezInes"],
+    	["28092021_1937", 388.5, 298.5, "chezInes"],
+    	["28092021_1938", 360.5, 277.5, "chezInes"],
+    	["31102021_0133", 1333.5, 836.5, "chezInes"],
+    ],
     //FIN MAP INES
-    [],
+
+    // // MAP CLEBARD
+    // [],
+    // //FIN MAP CLEBARD
   ],
   objects:[
     [],
     [],
     [],
-    [],
+    // [],
   ],
 }
 };
@@ -457,10 +482,6 @@ function draw() {
   }
   //COMMON STATE FOR PRIVATE PLACES ?
   else if(state === `privateMap`) {
-    // CHANGEMENT POINT TRANSLATION POUR CENTRER PRIVATE MAP
-    centre.x = 0;
-    centre.y = -height/30;
-
     privateMap();
   }
 }
@@ -561,9 +582,6 @@ function privateMap() {
 
 
 function mousePressed() {
-  // CALCULATE THE POSITION OF THE MOUSE PAR RAPPORT AU POINT DE TRANSLATION TO PERMIT NAVIGATION
-  centre.offsetX = centre.x-mouseX;
-  centre.offsetY = centre.y-mouseY;
   // TRIGGERS NAVIGATION
   centre.dragging = true;
  // PRIVATE PLACES ICONS CLICK TRIGGERS CHANGE STATE
@@ -589,10 +607,17 @@ function mousePressed() {
 
   if(mouseButton === RIGHT) {
     state = `mapMontreal`
+    // CHANGEMENT POINT TRANSLATION POUR CENTRER PUBLIC MAP
+    centre.x = -width/2.45;
+    centre.y = -height/3.5;
     for (let i = 0; i < mapPrivate.objects.length; i++) {
      mapPrivate.object[i].imgdisplayed = false;
    }
   }
+  // CALCULATE THE POSITION OF THE MOUSE PAR RAPPORT AU POINT DE TRANSLATION TO PERMIT NAVIGATION
+  centre.offsetX = centre.x-mouseX;
+  centre.offsetY = centre.y-mouseY;
+
 };
 
 function mouseReleased(){

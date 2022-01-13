@@ -60,7 +60,11 @@ class CartePrivate{
     let d = dist(this.x,this.y,mouseX-centre.x,mouseY-centre.y)
       if (d < this.size/2) {
         state = `privateMap`;
+        // CHANGEMENT POINT TRANSLATION POUR CENTRER PRIVATE MAP
+        centre.x = 0;
+        centre.y = -height/30;
         this.imgdisplayed = true;
+
     }
   }
 
